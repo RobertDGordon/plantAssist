@@ -35,13 +35,12 @@ function FoldersList() {
       .then((response) => response.json())
       .then((json) => {
         console.log("API/users:", json)
-        // setPlants(json.data[0].plantIds)
 
-        const folderIds = json.data[0].folderIds;
-
+        const data = {folderIds: json.data[0].foldersIds};//foldersIds <--- plural?  Should be singular "folderIds" in model
+        
         fetch(`http://localhost:8080/api/folder/list`, {
           method: "POST",
-          body: JSON.stringify(folderIds),
+          body: JSON.stringify(data),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
